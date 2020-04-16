@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CurrencyConverterApp</string>
+
+    <string name="error_message_text">Sorry, we\'re failed!</string>
+    <string name="currency_text_digits">0123456789,.</string>
+    <string name="currency_hint">0.00</string>
 </resources>
