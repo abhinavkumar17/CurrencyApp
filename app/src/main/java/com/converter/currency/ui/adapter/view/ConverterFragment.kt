@@ -1,4 +1,4 @@
-package com.converter.currency.ui
+package com.converter.currency.ui.adapter.view
 
 import android.app.Activity
 import android.os.Bundle
@@ -12,12 +12,15 @@ import com.converter.currency.R
 import com.converter.currency.data.remote.RevolutService
 import com.converter.currency.di.component.DaggerFragmentComponent
 import com.converter.currency.model.Currency
+import com.converter.currency.ui.ConverterContract
+import com.converter.currency.ui.ConverterPresenter
 import com.converter.currency.ui.adapter.ConverterAdapter
 import com.converter.currency.ui.adapter.ConverterListener
 import kotlinx.android.synthetic.main.fragment_converter.*
 import javax.inject.Inject
 
-class ConverterFragment : Fragment(), ConverterContract.View {
+class ConverterFragment : Fragment(),
+    ConverterContract.View {
 
     @Inject
     lateinit var revolutService: RevolutService
