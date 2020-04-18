@@ -5,12 +5,14 @@
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_none">0dp</dimen>
 
-    <dimen name="text_size_large">16sp</dimen>
-
     <!-- Currency -->
     <dimen name="currency_thumbnail_width">56dp</dimen>
     <dimen name="currency_thumbnail_height">56dp</dimen>
 
     <dimen name="currency_long_name_margin_bottom">2dp</dimen>
+
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
 
 </resources>
