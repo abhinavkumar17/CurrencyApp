@@ -6,5 +6,5 @@ import dagger.Component
 
 @Component(modules = [ApplicationModule::class])
 interface ApplicationComponent {
-    fun injectRevolutApplication(revolutDemoApplication: MainApplication)
+    fun inject(mainApplication: MainApplication)
 }

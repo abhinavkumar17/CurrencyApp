@@ -4,5 +4,5 @@ import io.reactivex.Observable
 
 interface DataSource {
 
-    fun getLatestCurrencyRates(base: String): Observable<RevolutBaseResponse>
+    fun getLatestCurrencyRates(base: String): Observable<BaseResponse>
 }

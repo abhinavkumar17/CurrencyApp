@@ -1,8 +1,7 @@
 package com.converter.currency.baseview
 
 import android.view.View
-
-open interface ViewRoot {
+ interface ViewRoot {
     /**
      * Get the root Android View which is used internally by this MVC View for presenting data
      * to the user.<br>

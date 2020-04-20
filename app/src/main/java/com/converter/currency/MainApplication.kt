@@ -15,7 +15,7 @@ class MainApplication: Application() {
         RxJava2Debug.enableRxJava2AssemblyTracking()
 
         component = DaggerApplicationComponent.builder().build()
-        component.injectRevolutApplication(this)
+        component.inject(this)
     }
 
     fun getApplicationComponent(): ApplicationComponent {

@@ -1,6 +1,5 @@
 package com.converter.currency.baseview
-
-open interface ObservableView<ListenerType> :ViewRoot {
+ interface ObservableView<ListenerType> : ViewRoot {
 
     /**
      * Register a listener that will be notified of any input events performed on this MVC view

@@ -10,7 +10,7 @@ import com.converter.currency.model.Currency
 import com.converter.currency.utils.Constants.BASE_CURRENCY_EURO
 import com.converter.currency.utils.ResourcesUtils
 
-class ConverterAdapter(private val listener: ConverterListener) :
+class ConverterAdapter() :
     RecyclerView.Adapter<CurrencyViewHolder>() {
 
     enum class PayLoad {
@@ -110,7 +110,7 @@ class ConverterAdapter(private val listener: ConverterListener) :
         items?.removeAt(fromPosition).also {
             val currency = it ?: return@also
             items?.add(0, currency)
-            listener.onSymbolChanged(currency)
+            //listener.onSymbolChanged(currency)
         }
 
         notifyItemMoved(fromPosition, 0)

@@ -2,7 +2,7 @@ package com.converter.currency.di.component
 
 import com.converter.currency.di.module.NetworkModule
 import com.converter.currency.di.module.RetrofitModule
-import com.converter.currency.ui.adapter.view.ConverterFragment
+import com.converter.currency.ui.adapter.view.CurrencyRatesFragment
 import dagger.Component
 
 @Component(
@@ -10,6 +10,5 @@ import dagger.Component
     dependencies = [ApplicationComponent::class]
 )
 interface FragmentComponent {
-
-    fun injectConverterFragment(converterFragment: ConverterFragment)
+    fun inject(currencyRatesFragment: CurrencyRatesFragment)
 }

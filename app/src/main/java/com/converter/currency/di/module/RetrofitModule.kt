@@ -1,6 +1,7 @@
 package com.converter.currency.di.module
 
-import com.converter.currency.data.remote.RevolutService
+import com.converter.currency.baseview.ViewFactory
+import com.converter.currency.data.remote.DataService
 import com.converter.currency.utils.Constants
 import com.google.gson.Gson
 import dagger.Module
@@ -23,7 +24,7 @@ object RetrofitModule {
     @Reusable
     @JvmStatic
     internal fun retrofit(okHttpClient: OkHttpClient, gson: Gson) =
-        Retrofit.Builder().baseUrl(Constants.REVOLUT_BASE_URL)
+        Retrofit.Builder().baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient).build()
@@ -32,6 +33,13 @@ object RetrofitModule {
     @Provides
     @Reusable
     @JvmStatic
-    internal fun revolutService(retrofit: Retrofit) =
-        retrofit.create(RevolutService::class.java)
+    internal fun dataService(retrofit: Retrofit) =
+        retrofit.create(DataService::class.java)
+
+    @Provides
+    @Reusable
+    @JvmStatic
+    internal fun getViewFactory() = {
+          ViewFactory()
+    }
 }

@@ -4,8 +4,7 @@ object Constants {
 
     const val MAIN_APPLICATION = "MAIN_APPLICATION"
 
-    const val REVOLUT_BASE_URL = "https://hiring.revolut.codes/api/android/"
-    //https://hiring.revolut.codes/api/android/latest?base=EUR
+    const val BASE_URL = "https://hiring.revolut.codes/api/android/"
 
     const val BASE_CURRENCY_EURO = "EUR"
 
