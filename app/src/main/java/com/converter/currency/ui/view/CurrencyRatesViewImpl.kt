@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.converter.currency.R
 import com.converter.currency.baseview.BaseView
 import com.converter.currency.databinding.FragmentConverterBinding
 import com.converter.currency.model.Currency
@@ -34,6 +35,12 @@ class CurrencyRatesViewImpl constructor() : BaseView<CurrencyRatesView.Listener>
     override fun updateItems(currencyRates: ArrayList<Currency>) {
         mViewDataBinding.textView.visibility = View.VISIBLE
         mConverterAdapter.updateItems(currencyRates)
+    }
+
+    override fun setServerError() {
+        mViewDataBinding.textView.visibility = View.GONE
+        mViewDataBinding.recyclerView.visibility = View.GONE
+        mViewDataBinding.genericErrorTextView.setText(getContext()?.getResources()?.getString(R.string.generic_error_statement))
     }
 
 }

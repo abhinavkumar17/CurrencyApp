@@ -29,7 +29,7 @@ class CurrencyRatesViewModel @Inject constructor(
         mListeners.add(listener)
     }
 
-    fun getData(){
+    fun getCurrencyRatesData(){
         mCurrencyRatesUseCase.getLatestCurrencyRates()
     }
 

@@ -11,4 +11,5 @@ interface CurrencyRatesView : ObservableView<CurrencyRatesView.Listener> {
     fun showProgressIndication()
     fun hideProgressIndication()
     fun updateItems(currencyRates: ArrayList<Currency>)
+    fun setServerError()
 }

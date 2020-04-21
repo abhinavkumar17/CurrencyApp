@@ -102,6 +102,6 @@ class CurrencyRatesFragmentTest {
         // Act
         SUT.onFetchCurrencyFailAndNotify()
         // Assert
-        // Mockito.verify<Any?>(mProductListView).setServerError()
+         Mockito.verify(mProductListView).setServerError()
     }
 }

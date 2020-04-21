@@ -62,7 +62,7 @@ class CurrencyRatesViewModelTest {
     fun fetchProduct_sucess_add_to_compositable_true() {
         // Arrange
         // Act
-        SUT.getData()
+        SUT.getCurrencyRatesData()
         // Assert
         Mockito.verify(mFetchCurrencyRatesUseCase).getLatestCurrencyRates()
     }

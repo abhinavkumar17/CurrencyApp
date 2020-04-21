@@ -43,7 +43,7 @@ class CurrencyRatesFragment : BaseFragment(), CurrencyRatesView.Listener,
         mCurrencyRatesView.registerListener(this)
         mCurrencyRatesView.showProgressIndication()
         viewModel.registerListener(this)
-        viewModel.getData()
+        viewModel.getCurrencyRatesData()
     }
 
     override fun onStop() {
@@ -59,5 +59,6 @@ class CurrencyRatesFragment : BaseFragment(), CurrencyRatesView.Listener,
 
     override fun onFetchCurrencyFailAndNotify() {
         mCurrencyRatesView.hideProgressIndication()
+        mCurrencyRatesView.setServerError()
     }
 }
