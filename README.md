@@ -29,7 +29,7 @@ Repository:
     management(ShoppingRepository class)
 RX:
    RX is used for multithrading for POST, GET, DELETE and GET. 
-   This is used in combination with Retrofit.(ShoppingService.class)
+   This is used in combination with Retrofit.
 Dagger 2:
    App uses Dagger2 as dependency library. This is done to reduce boilerplate code. 
    This has been acheived through seprating it 
