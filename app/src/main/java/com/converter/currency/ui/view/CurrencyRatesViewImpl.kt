@@ -40,6 +40,7 @@ class CurrencyRatesViewImpl constructor() : BaseView<CurrencyRatesView.Listener>
     override fun setServerError() {
         mViewDataBinding.textView.visibility = View.GONE
         mViewDataBinding.recyclerView.visibility = View.GONE
+        mViewDataBinding.genericErrorTextView.visibility = View.VISIBLE
         mViewDataBinding.genericErrorTextView.setText(getContext()?.getResources()?.getString(R.string.generic_error_statement))
     }
 
