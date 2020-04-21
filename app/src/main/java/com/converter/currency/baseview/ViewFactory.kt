@@ -2,8 +2,8 @@ package com.converter.currency.baseview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.converter.currency.ui.adapter.view.CurrencyRatesView
-import com.converter.currency.ui.adapter.view.CurrencyRatesViewImpl
+import com.converter.currency.ui.view.CurrencyRatesView
+import com.converter.currency.ui.view.CurrencyRatesViewImpl
 import javax.inject.Inject
 
 class ViewFactory @Inject constructor(){

@@ -2,7 +2,7 @@ package com.converter.currency.di.component
 
 import com.converter.currency.di.module.NetworkModule
 import com.converter.currency.di.module.RetrofitModule
-import com.converter.currency.ui.adapter.view.CurrencyRatesFragment
+import com.converter.currency.ui.view.CurrencyRatesFragment
 import dagger.Component
 
 @Component(

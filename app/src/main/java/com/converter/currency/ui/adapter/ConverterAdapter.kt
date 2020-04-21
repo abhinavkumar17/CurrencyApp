@@ -17,9 +17,9 @@ class ConverterAdapter() :
         VALUE
     }
 
-    private var items: ArrayList<Currency>? = null
-    var currentBaseSymbol = BASE_CURRENCY_EURO
-    var currentBaseValue = 100.0
+    private var mTtems: ArrayList<Currency>? = null
+    var mCurrentBaseSymbol = BASE_CURRENCY_EURO
+    var mCurrentBaseValue = 100.0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
         val context = parent.context
@@ -30,11 +30,11 @@ class ConverterAdapter() :
     }
 
     override fun getItemCount(): Int {
-        return items?.size ?: 0
+        return mTtems?.size ?: 0
     }
 
     override fun onBindViewHolder(holder: CurrencyViewHolder, position: Int) {
-        val currency = items?.get(position) ?: return
+        val currency = mTtems?.get(position) ?: return
         val symbol = currency.symbol
         holder.imageCurrencyFlag.setImageResource(
             ResourcesUtils.getCurrencyFlagId(
@@ -62,8 +62,8 @@ class ConverterAdapter() :
         }
 
         if (position == 0) {
-            currentBaseSymbol = currency.symbol
-            currentBaseValue = currency.value
+            mCurrentBaseSymbol = currency.symbol
+            mCurrentBaseValue = currency.value
             holder.setIsRecyclable(false)
         } else {
             holder.setIsRecyclable(true)
@@ -79,23 +79,23 @@ class ConverterAdapter() :
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (p0.isNullOrEmpty() || (currency.symbol != currentBaseSymbol) || position != 0 || !holder.currencyValue.isFocused) return
-                currentBaseValue = p0.toString().toDouble()
+                if (p0.isNullOrEmpty() || (currency.symbol != mCurrentBaseSymbol) || position != 0 || !holder.currencyValue.isFocused) return
+                mCurrentBaseValue = p0.toString().toDouble()
             }
         })
     }
 
     fun updateItems(list: ArrayList<Currency>) {
-        if (items.isNullOrEmpty()) {
-            items = list
-            items?.add(0, Currency(currentBaseSymbol, currentBaseValue))
+        if (mTtems.isNullOrEmpty()) {
+            mTtems = list
+            mTtems?.add(0, Currency(mCurrentBaseSymbol, mCurrentBaseValue))
         } else {
-            items?.forEach { currency ->
+            mTtems?.forEach { currency ->
                 val symbol = currency.symbol
-                var value = currentBaseValue
+                var value = mCurrentBaseValue
                 list.forEach {
                     if (symbol == it.symbol) {
-                        value = it.value * currentBaseValue
+                        value = it.value * mCurrentBaseValue
                     }
                 }
                 currency.value = value
@@ -107,9 +107,9 @@ class ConverterAdapter() :
     private fun moveItem(fromPosition: Int) {
         if (fromPosition == 0) return
 
-        items?.removeAt(fromPosition).also {
+        mTtems?.removeAt(fromPosition).also {
             val currency = it ?: return@also
-            items?.add(0, currency)
+            mTtems?.add(0, currency)
             //listener.onSymbolChanged(currency)
         }
 

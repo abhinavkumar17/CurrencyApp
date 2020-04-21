@@ -1,4 +1,4 @@
-package com.converter.currency.ui.adapter.view
+package com.converter.currency.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,7 +24,7 @@ class CurrencyRatesFragment : BaseFragment(), CurrencyRatesView.Listener,
 
     lateinit var mCurrencyRatesView: CurrencyRatesView
 
-    private val viewModel by viewModels<CurrencyRatesViewModel>
+    val viewModel by viewModels<CurrencyRatesViewModel>
     { getViewModelFactory(mCurrencyRatesUseCase) }
 
 
@@ -38,24 +38,26 @@ class CurrencyRatesFragment : BaseFragment(), CurrencyRatesView.Listener,
         return mCurrencyRatesView.getRoot()
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mCurrencyRatesView.registerListener(this)
-        mCurrencyRatesView.showProgressIndication()
-    }
-
     override fun onStart() {
         super.onStart()
+        mCurrencyRatesView.registerListener(this)
+        mCurrencyRatesView.showProgressIndication()
         viewModel.registerListener(this)
         viewModel.getData()
     }
 
-    override fun onFetchProductSecessAndNotify(currencyRates: ArrayList<Currency>) {
+    override fun onStop() {
+        super.onStop()
+        viewModel.unregisterListener(this)
+        mCurrencyRatesView.unregisterListener(this)
+    }
+
+    override fun onFetchCurrencySucessAndNotify(currencyRates: ArrayList<Currency>) {
+        mCurrencyRatesView.hideProgressIndication()
         mCurrencyRatesView.updateItems(currencyRates)
     }
 
-    override fun onFetchProductFailAndNotify() {
-        TODO("Not yet implemented")
+    override fun onFetchCurrencyFailAndNotify() {
+        mCurrencyRatesView.hideProgressIndication()
     }
 }

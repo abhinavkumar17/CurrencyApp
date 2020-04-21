@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/converterFragment"
-        android:name="com.converter.currency.ui.adapter.view.CurrencyRatesFragment"
+        android:name="com.converter.currency.ui.view.CurrencyRatesFragment"
         android:label="ConverterFragment" />
 </navigation>

@@ -20,30 +20,30 @@ class CurrencyRatesUseCase @Inject constructor(private val getLatestCurrencyRate
     BaseObservable<CurrencyRatesUseCase.Listener>() {
 
     interface Listener{
-        fun onFetchProductSecessAndNotify(currencyRates: ArrayList<Currency>)
-        fun onFetchProductFailed()
+        fun onFetchCurrencytSucessAndNotify(currencyRates: ArrayList<Currency>)
+        fun onFetchCurrencyFailed()
     }
 
-    private var compositeDisposable = CompositeDisposable()
-    var currentBaseCurrency = Constants.BASE_CURRENCY_EURO
+    private var mCompositeDisposable = CompositeDisposable()
+    var mCurrentBaseCurrency = Constants.BASE_CURRENCY_EURO
 
     fun getLatestCurrencyRates() {
         Observable.interval(1000, TimeUnit.MILLISECONDS)
             .flatMap {
-                getLatestCurrencyRates.getUseCaseObservable(currentBaseCurrency)
+                getLatestCurrencyRates.getUseCaseObservable(mCurrentBaseCurrency)
             }.flatMap {
                 Observable.just(LatestCurrenciesMapper().mapToEntity(it))
             }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : Observer<LatestCurrencies> {
                 override fun onSubscribe(d: Disposable) {
-                    compositeDisposable.add(d)
+                    mCompositeDisposable.add(d)
                 }
 
                 override fun onNext(values: LatestCurrencies) {
                    // view.updateValues(values.currencyRates)
                     for (listener in getListeners()) {
-                        listener.onFetchProductSecessAndNotify(values.currencyRates)
+                        listener.onFetchCurrencytSucessAndNotify(values.currencyRates)
                     }
                 }
 
@@ -53,7 +53,7 @@ class CurrencyRatesUseCase @Inject constructor(private val getLatestCurrencyRate
 
                 override fun onError(e: Throwable) {
                     for (listener in getListeners()) {
-                        listener.onFetchProductFailed()
+                        listener.onFetchCurrencyFailed()
                     }
                     val localizedMessage = e.localizedMessage ?: return
                     Log.i(Constants.MAIN_APPLICATION, localizedMessage)

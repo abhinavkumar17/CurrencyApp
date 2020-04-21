@@ -1,4 +1,4 @@
-package com.converter.currency.ui.adapter.view
+package com.converter.currency.ui.view
 
 import com.converter.currency.baseview.ObservableView
 import com.converter.currency.model.Currency

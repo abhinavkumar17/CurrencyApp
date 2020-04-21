@@ -5,22 +5,22 @@ import com.converter.currency.model.Currency
 import javax.inject.Inject
 
 class CurrencyRatesViewModel @Inject constructor(
-    var currencyRatesUseCase: CurrencyRatesUseCase) : ViewModel()
-    ,CurrencyRatesUseCase.Listener {
+    var mCurrencyRatesUseCase: CurrencyRatesUseCase) : ViewModel(),
+     CurrencyRatesUseCase.Listener {
 
     init {
-        currencyRatesUseCase.registerListener(this)
+        mCurrencyRatesUseCase.registerListener(this)
     }
 
 
     interface Listener{
-        fun onFetchProductSecessAndNotify(currencyRates: ArrayList<Currency>)
-        fun onFetchProductFailAndNotify()
+        fun onFetchCurrencySucessAndNotify(currencyRates: ArrayList<Currency>)
+        fun onFetchCurrencyFailAndNotify()
     }
 
     override fun onCleared() {
         super.onCleared()
-        currencyRatesUseCase.unregisterListener(this)
+        mCurrencyRatesUseCase.unregisterListener(this)
     }
 
     val mListeners = mutableSetOf<Listener>()
@@ -30,22 +30,22 @@ class CurrencyRatesViewModel @Inject constructor(
     }
 
     fun getData(){
-        currencyRatesUseCase.getLatestCurrencyRates()
+        mCurrencyRatesUseCase.getLatestCurrencyRates()
     }
 
     fun unregisterListener(listener: Listener) {
         mListeners.remove(listener)
     }
 
-    override fun onFetchProductSecessAndNotify(currencyRates: ArrayList<Currency>) {
+    override fun onFetchCurrencytSucessAndNotify(currencyRates: ArrayList<Currency>) {
         for (listener in mListeners) {
-            listener.onFetchProductSecessAndNotify(currencyRates)
+            listener.onFetchCurrencySucessAndNotify(currencyRates)
         }
     }
 
-    override fun onFetchProductFailed() {
+    override fun onFetchCurrencyFailed() {
         for (listener in mListeners) {
-            listener.onFetchProductFailAndNotify()
+            listener.onFetchCurrencyFailAndNotify()
         }
     }
 
